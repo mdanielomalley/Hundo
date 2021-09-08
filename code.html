@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Dan O'Malley</title>
+    <title>Hundo: A Coding Project by Dan O'Malley</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,8 +30,8 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black">
     <div class="container-fluid">
         <img src="/img/LogoIconIsolateNoBackground.png" class="align-content-center justify-content-start" height="40">
-        <a class="navbar-brand" href="#" class="aligh-content-center justify-content-end">
-            APP NAME
+        <a class="navbar-brand logoFont" href="#" class="aligh-content-center justify-content-end">
+            Hundo
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,22 +62,104 @@
 <!-- ================Main Section=============== -->
 <main class="flex-shrink-0">
     <div class="container py-4 px-5 mt-5 mb-2">
-        <h2 class="border-1 border-bottom border-dark p-2">The Code for App Name</h2>
+        <h2 class="border-1 border-bottom border-dark p-2 logoFont">The Code for Hundo</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript">
-                        //Call Hello world
-                        function helloWorld() {
-                        alert("hello World");
-                        }
+                        // Hundo Application
+
+// Enter Values 
+// Click a Button 
+// Display them
+
+// Get the values from the page
+// Start or controller functions
+function getValues(){
+    // get start value from the page/document
+    let startValue = document.getElementById("startValue").value;
+    // get end value from the page/document
+    let endValue = document.getElementById("endValue").value;
+    
+    // Must Validate Input
+    // parse into Integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    if(Number.isInteger(startValue) && Number.isInteger(endValue)){
+
+        // call generateNumbers
+        numbers = generateNumbers(startValue,endValue);
+         // call displayNumbers - not every function has a return statement
+        displayNumbers(numbers);
+
+    }else{
+        alert("You must enter integers only!");
+    }
+    
+   
+}
+
+// Generate numbers from startValue to endValue
+// logic function(s)
+function generateNumbers(sValue, eValue){
+
+    let numbers = [];
+
+    // first value of array has index of 0
+    // numbers = 1,2,3,4,5
+
+    //we want to get all numbers from start to end
+    // index = index + 1 same as index++ or i++
+    for(let index = sValue; index <= eValue; index++){
+
+        // this will execute in a loop until index = eValue
+        numbers.push(index);
+    }
+
+    return numbers;
+
+}
+
+// display the numbers and mark the even numbers in bold
+// Display or view functions
+function displayNumbers(numbers){
+
+    let templateRows = "";
+
+    for (let index = 0; index < numbers.length; index++) {
+        
+        let className = "even";
+        let number = numbers[index];
+
+        if(number % 2 == 0){
+            className = "even";
+        }
+        else{
+            className = "odd";
+        }
+        templateRows += `&lt;tr>&lt;td class="${className}">${number}&lt;/td>&lt;/tr>
+    }
+    document.getElementById("results").innerHTML = templateRows;
+
+}
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <h5>Hello World Function</h5>
-                <p>The Code is structured in one function.</p>
-                <p>Hello World is a function that displays an alert with a message of Hello World</p>
+                <h5 class="logoFont">Javascript Functions</h5>
+                <p>The Code is structured utilizing the seperation of concerns principle.</p>
+                <p>This allows the code to be more maintainable, 
+                   and prevents unnecessary confusion should the code file need debugging.</p>
+                <p>First, The Hundo application takes two integer inputs from a user. 
+                   Upon submission of the integers, Hundo outputs a table listing each of the numbers 
+                   between the starting integer and the ending integer. Hundo displays each of the even 
+                   numbers in bold while leaving the odd numbers in normal text.</p>
+                <p>To ensure that the user doesn't submit any data types other than integers, 
+                   I parse the integers and display an error message should they submit, 
+                   for example, a string. Using an array, I generate a list of the integers, 
+                   and with a modulus operater, assign the even values bold typeface through 
+                   a template literal and css.</p>
             </div>
         </div>
     </div>

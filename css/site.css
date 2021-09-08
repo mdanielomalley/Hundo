@@ -7,6 +7,14 @@
 
 }
 
+.odd{
+    font-weight: 100;
+}
+
+.even{
+    font-weight: bold;
+}
+
 body{
     color:var(--dark-color);
 }
@@ -70,4 +78,10 @@ pre[class*="language-"] {
 white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
+}
+
+.logoFont {
+    font-family: uniwars, sans-serif;
+    font-weight: 600;
+    font-style: italic;
 }
